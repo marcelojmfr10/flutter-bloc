@@ -7,7 +7,7 @@ class CubitScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Cubit')),
-      body: const Center(child: Text('Fernando Herrera')),
+      body: const Center(child: Text('Marcelo Fuentes')),
     );
   }
 }
