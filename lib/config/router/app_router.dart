@@ -1,4 +1,4 @@
-import 'package:flutter_bloc/presentation/screens/screens.dart';
+import 'package:flutter_bloc_cubits/presentation/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/config/config.dart';
+import 'package:flutter_bloc_cubits/config/config.dart';
 
 void main() {
   runApp(const MainApp());
