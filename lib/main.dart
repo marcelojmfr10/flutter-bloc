@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_cubits/config/config.dart';
+import 'package:flutter_bloc_cubits/presentation/blocs/blocs.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const BlocsProviders());
+}
+
+class BlocsProviders extends StatelessWidget {
+  const new({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => UsernameCubit())],
+      child: MainApp(),
+    );
+  }
 }
 
 class MainApp extends StatelessWidget {

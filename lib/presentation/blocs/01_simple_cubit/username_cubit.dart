@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
 
-class UsenameCubit extends Cubit<String> {
-  UsenameCubit() : super('no-username');
+class UsernameCubit extends Cubit<String> {
+  UsernameCubit() : super('no-username');
 }
