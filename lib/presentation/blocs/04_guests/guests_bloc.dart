@@ -42,43 +42,24 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
           ],
         ),
       ) {
-    // on<SetInvitedFilterEvent>((event, emit) {
-    //   emit(state.copyWith(filter: GuestFilter.invited));
-    // });
-
-    // on<SetNoInvitedFilterEvent>((event, emit) {
-    //   emit(state.copyWith(filter: GuestFilter.noInvited));
-    // });
-
-    // on<SetAllFilterEvent>((event, emit) {
-    //   emit(state.copyWith(filter: GuestFilter.all));
-    // });
-
     on<SetCustomFilterEvent>((event, emit) {
       emit(state.copyWith(filter: event.newFilter));
     });
 
     on<AddGuest>(_addGuestHandler);
+    on<ToggleGuest>(_toggleGuestHandler);
   }
 
   void changeFilter(GuestFilter newFilter) {
     add(SetCustomFilterEvent(newFilter));
-
-    // switch (newFilter) {
-    //   case GuestFilter.all:
-    //     add(SetAllFilterEvent());
-    //     break;
-    //   case GuestFilter.invited:
-    //     add(SetInvitedFilterEvent());
-    //     break;
-    //   case GuestFilter.noInvited:
-    //     add(SetNoInvitedFilterEvent());
-    //     break;
-    // }
   }
 
   void addGuest(String name) {
     add(AddGuest(name));
+  }
+
+  void toggleGuest(String id) {
+    add(ToggleGuest(id));
   }
 
   void _addGuestHandler(AddGuest event, Emitter<GuestsState> emit) {
@@ -88,5 +69,19 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
       completedAt: null,
     );
     emit(state.copyWith(guests: [...state.guests, newGuest]));
+  }
+
+  void _toggleGuestHandler(ToggleGuest event, Emitter<GuestsState> emit) {
+    final newGuests = state.guests.map((guest) {
+      if (guest.id == event.id) {
+        return guest.copyWith(
+          completedAt: guest.completedAt == null ? DateTime.now() : null,
+        );
+      }
+
+      return guest;
+    }).toList();
+
+    emit(state.copyWith(guests: newGuests));
   }
 }
