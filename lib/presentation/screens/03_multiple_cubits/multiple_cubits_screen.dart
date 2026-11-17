@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubits/presentation/blocs/blocs.dart';
 
 class MultipleCubitScreen extends StatelessWidget {
   const MultipleCubitScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final counterCubit = context.watch<CounterCubit>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Multiple Cubits')),
       body: Center(
@@ -18,12 +22,17 @@ class MultipleCubitScreen extends StatelessWidget {
               onPressed: () {},
             ),
 
-            const Text('Fernando Herrera', style: TextStyle(fontSize: 25)),
+            const Text('Marcelo Fuentes', style: TextStyle(fontSize: 25)),
 
             TextButton.icon(
               icon: const Icon(Icons.add, size: 50),
-              label: const Text('0', style: TextStyle(fontSize: 100)),
-              onPressed: () {},
+              label: Text(
+                '${counterCubit.state}',
+                style: TextStyle(fontSize: 100),
+              ),
+              onPressed: () {
+                counterCubit.incrementBy(2);
+              },
             ),
 
             const Spacer(flex: 2),
