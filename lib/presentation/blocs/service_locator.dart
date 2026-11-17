@@ -1,0 +1,12 @@
+import 'package:flutter_bloc_cubits/config/config.dart';
+import 'package:flutter_bloc_cubits/presentation/blocs/blocs.dart';
+import 'package:get_it/get_it.dart';
+
+GetIt getIt = GetIt.instance;
+
+void serviceLocatorInit() {
+  getIt.registerSingleton(UsernameCubit());
+  getIt.registerSingleton(RouterSimpleCubit());
+  getIt.registerSingleton(CounterCubit());
+  getIt.registerSingleton(ThemeCubit());
+}

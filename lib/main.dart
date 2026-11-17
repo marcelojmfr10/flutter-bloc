@@ -4,6 +4,7 @@ import 'package:flutter_bloc_cubits/config/config.dart';
 import 'package:flutter_bloc_cubits/presentation/blocs/blocs.dart';
 
 void main() {
+  serviceLocatorInit();
   runApp(const BlocsProviders());
 }
 
@@ -14,10 +15,10 @@ class BlocsProviders extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UsernameCubit(), lazy: false),
-        BlocProvider(create: (context) => RouterSimpleCubit()),
-        BlocProvider(create: (context) => CounterCubit()),
-        BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => getIt<UsernameCubit>()),
+        BlocProvider(create: (context) => getIt<RouterSimpleCubit>()),
+        BlocProvider(create: (context) => getIt<CounterCubit>()),
+        BlocProvider(create: (context) => getIt<ThemeCubit>()),
       ],
       child: MainApp(),
     );
