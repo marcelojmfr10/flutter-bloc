@@ -18,3 +18,8 @@ final class SetCustomFilterEvent extends GuestsEvent {
 
   const SetCustomFilterEvent(this.newFilter);
 }
+
+final class AddGuest extends GuestsEvent {
+  final String name;
+  const AddGuest(this.name);
+}

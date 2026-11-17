@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubits/config/config.dart';
 import 'package:flutter_bloc_cubits/presentation/blocs/blocs.dart';
 
 class GuestsScreen extends StatelessWidget {
@@ -12,7 +13,9 @@ class GuestsScreen extends StatelessWidget {
       body: const _TodoView(),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          context.read<GuestsBloc>().addGuest(RandomGenerator.getRandomName());
+        },
       ),
     );
   }
