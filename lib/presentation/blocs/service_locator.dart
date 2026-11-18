@@ -14,4 +14,5 @@ void serviceLocatorInit() {
     PokemonBloc(fetchPokemonName: PokemonInformation.getPokemonName),
   );
   getIt.registerSingleton(GeolocationCubit()..watchUserLocation());
+  getIt.registerSingleton(HistoricLocationBloc());
 }
