@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_cubits/config/config.dart';
 
 class RouterScreen extends StatelessWidget {
   const RouterScreen({super.key});
@@ -9,7 +11,9 @@ class RouterScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Cubit + Go Router')),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.arrow_back_ios_new_rounded),
-        onPressed: () {},
+        onPressed: () {
+          context.read<RouterSimpleCubit>().goBack();
+        },
       ),
     );
   }
