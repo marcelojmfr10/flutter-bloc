@@ -13,6 +13,13 @@ void serviceLocatorInit() {
   getIt.registerSingleton(
     PokemonBloc(fetchPokemonName: PokemonInformation.getPokemonName),
   );
-  getIt.registerSingleton(GeolocationCubit()..watchUserLocation());
+  // final historicBloc = getIt.registerSingleton(HistoricLocationBloc());
   getIt.registerSingleton(HistoricLocationBloc());
+  getIt.registerSingleton(
+    GeolocationCubit(
+      // onNewUserLocationCallback: historicBloc.onNewUserLocation
+      onNewUserLocationCallback:
+          getIt<HistoricLocationBloc>().onNewUserLocation,
+    )..watchUserLocation(),
+  );
 }

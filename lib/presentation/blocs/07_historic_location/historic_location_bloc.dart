@@ -10,6 +10,10 @@ class HistoricLocationBloc
     on<NewLocation>(_onNewLocationHandler);
   }
 
+  void onNewUserLocation((double lat, double lng) location) {
+    add(NewLocation(location));
+  }
+
   void _onNewLocationHandler(
     NewLocation event,
     Emitter<HistoricLocationState> emit,
